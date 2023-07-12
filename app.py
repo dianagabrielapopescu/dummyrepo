@@ -51,23 +51,12 @@ def get_copilot_token():
 @app.post("/v1/engines/copilot-codex/completions")
 @app.post("/v1/completions")
 async def completions(data: OpenAIinput):
-    
-    print(f'  input data:     {data}')
-    print(f'  input data-attributes:     {dir(data)}')
-    print(f'  input data-dir:     {data.__dir__()}')
-
     data = data.dict()
 
-    print(f'  input data2:     {data}')
-    print(f'  input data2-attributes:     {dir(data)}')
-    print(f'  input data2-dir:     {data.__dir__()}')
+    print(f'  input data-dict:     {data}')
 
     try:
         content = codegen(data=data)
-
-        print(f'  input content:     {content}')
-        print(f'  input content-attributes:     {dir(content)}')
-        print(f'  input content-dir:     {content.__dir__()}')
 
     except codegen.TokensExceedsMaximum as E:
         raise FauxPilotException(
