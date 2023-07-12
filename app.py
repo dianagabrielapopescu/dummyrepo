@@ -53,7 +53,7 @@ def get_copilot_token():
 async def completions(data: OpenAIinput):
     data = data.dict()
 
-    print(f'  input data-dict:     {data}')
+    print(data)
 
     try:
         content = codegen(data=data)
